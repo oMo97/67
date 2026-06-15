@@ -1,4 +1,4 @@
-# 6<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -470,6 +470,227 @@ nav {
   line-height: 1.6;
 }
 
+/* ── GAMES SECTION ── */
+.games-section { margin-bottom: 80px; }
+.games-grid-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media(max-width:760px){ .games-grid-wrap{ grid-template-columns:1fr; } }
+
+.game-box {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.game-box-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: var(--ink2);
+  color: var(--bg);
+}
+.game-box-header .gh-icon { font-size: 1.1rem; }
+.game-box-header .gh-title {
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-sm);
+  letter-spacing: .06em;
+}
+.game-box-header .gh-badge {
+  margin-left: auto;
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-xs);
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.7);
+  letter-spacing: .08em;
+}
+.game-box-body { padding: 20px; }
+.game-desc-text {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+/* Coin flip game */
+.coin-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.coin {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  font-family: 'DM Serif Display', serif;
+  border: 3px solid var(--rule);
+  background: var(--paper2);
+  transition: transform .15s;
+  cursor: default;
+  user-select: none;
+}
+.coin.flip-anim {
+  animation: coinFlip .6s ease;
+}
+@keyframes coinFlip {
+  0%   { transform: rotateY(0deg) scale(1); }
+  25%  { transform: rotateY(90deg) scale(1.1); }
+  50%  { transform: rotateY(180deg) scale(1); }
+  75%  { transform: rotateY(270deg) scale(1.1); }
+  100% { transform: rotateY(360deg) scale(1); }
+}
+.coin-stats {
+  display: flex; gap: 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-xs);
+}
+.coin-stat { text-align: center; }
+.coin-stat .cv { font-size: 1.2rem; font-weight: 500; color: var(--ink); }
+.coin-stat .cl { color: var(--muted); }
+.coin-history {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  max-height: 48px; overflow: hidden;
+  width: 100%;
+}
+.coin-chip {
+  font-size: .65rem;
+  padding: 2px 5px;
+  border-radius: 2px;
+  font-family: 'DM Mono', monospace;
+}
+.coin-chip.H { background: rgba(41,128,185,.12); color: var(--accent2); }
+.coin-chip.T { background: rgba(192,57,43,.1); color: var(--accent); }
+.coin-btn-row { display: flex; gap: 8px; }
+.g-btn {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid var(--rule);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-xs);
+  border-radius: 3px;
+  cursor: pointer;
+  letter-spacing: .08em;
+  transition: background .15s;
+}
+.g-btn:hover { background: var(--ink2); }
+.g-btn.outline { background: transparent; color: var(--ink); }
+.g-btn.outline:hover { background: var(--rule); }
+
+/* Guess the mean game */
+.gtm-canvas-wrap { position: relative; margin-bottom: 10px; }
+.gtm-canvas-wrap canvas { width: 100% !important; display: block; border: 1px solid var(--rule); border-radius: 3px; }
+.gtm-input-row { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+.gtm-input-row input {
+  flex:1; padding: 7px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-sm);
+  background: var(--paper2);
+  color: var(--ink);
+  outline: none;
+}
+.gtm-input-row input:focus { border-color: var(--accent2); }
+.gtm-feedback {
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-xs);
+  min-height: 20px;
+  color: var(--muted);
+}
+.gtm-score {
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-xs);
+  color: var(--slate);
+  margin-top: 6px;
+}
+
+/* CLT game */
+.clt-area { display: flex; flex-direction: column; gap: 10px; }
+.clt-canvas-wrap canvas { width: 100% !important; display: block; }
+.clt-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.clt-controls label { font-family: 'DM Mono', monospace; font-size: var(--fs-xs); color: var(--muted); }
+.clt-controls input[type=range] { width: 120px; accent-color: var(--ink); }
+.clt-controls .cv { font-family: 'DM Mono', monospace; font-size: var(--fs-xs); color: var(--accent2); }
+.clt-info {
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-xs);
+  color: var(--slate);
+  line-height: 1.7;
+}
+
+/* Probability quiz */
+.quiz-area {}
+.quiz-q {
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  font-weight: 500;
+  margin-bottom: 14px;
+  min-height: 44px;
+  line-height: 1.6;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.quiz-opt {
+  width: 100%;
+  text-align: left;
+  padding: 9px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper2);
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-xs);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+  letter-spacing: .04em;
+}
+.quiz-opt:hover:not(:disabled) { border-color: var(--accent2); background: rgba(41,128,185,.06); }
+.quiz-opt.correct { border-color: var(--green); background: rgba(39,174,96,.1); color: var(--green); }
+.quiz-opt.wrong   { border-color: var(--accent); background: rgba(192,57,43,.08); color: var(--accent); }
+.quiz-opt:disabled { cursor: default; }
+.quiz-explain {
+  font-size: var(--fs-xs);
+  color: var(--slate);
+  line-height: 1.7;
+  background: var(--highlight);
+  padding: 10px 14px;
+  border-radius: 3px;
+  border-left: 3px solid var(--gold);
+  display: none;
+  margin-bottom: 10px;
+}
+.quiz-explain.show { display: block; }
+.quiz-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'DM Mono', monospace;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+.quiz-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--rule);
+  border-radius: 2px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: var(--accent2);
+  border-radius: 2px;
+  transition: width .4s ease;
+}
+
 /* ── FOOTER ── */
 footer {
   border-top: 1px solid var(--rule);
@@ -507,6 +728,7 @@ section { position: relative; }
       <li><a href="#strategies">策略</a></li>
       <li><a href="#calculator">計算機</a></li>
       <li><a href="#distributions">分布圖</a></li>
+      <li><a href="#games">互動遊戲</a></li>
       <li><a href="#cheatsheet">速查表</a></li>
     </ul>
   </div>
@@ -588,10 +810,10 @@ section { position: relative; }
       <div class="sec-rule"></div>
     </div>
     <div class="strategy-tabs">
-      <button class="tab-btn active" onclick="switchTab('bayes')">貝葉斯更新</button>
-      <button class="tab-btn" onclick="switchTab('sampling')">大數法則</button>
-      <button class="tab-btn" onclick="switchTab('hypothesis')">假設檢定</button>
-      <button class="tab-btn" onclick="switchTab('montecarlo')">蒙地卡羅</button>
+      <button class="tab-btn active" onclick="switchTab(this,'bayes')">貝葉斯更新</button>
+      <button class="tab-btn" onclick="switchTab(this,'sampling')">大數法則</button>
+      <button class="tab-btn" onclick="switchTab(this,'hypothesis')">假設檢定</button>
+      <button class="tab-btn" onclick="switchTab(this,'montecarlo')">蒙地卡羅</button>
     </div>
 
     <!-- Bayes -->
@@ -815,10 +1037,130 @@ section { position: relative; }
     </div>
   </section>
 
+  <!-- GAMES -->
+  <section id="games" class="games-section">
+    <div class="sec-header">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">互動遊戲</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="games-grid-wrap">
+
+      <!-- GAME 1: Coin Flip -->
+      <div class="game-box">
+        <div class="game-box-header">
+          <span class="gh-icon">🪙</span>
+          <span class="gh-title">硬幣實驗室</span>
+          <span class="gh-badge">大數法則</span>
+        </div>
+        <div class="game-box-body">
+          <div class="game-desc-text">親身體驗大數法則：持續拋硬幣，看正面比率如何慢慢收斂到 50%。</div>
+          <div class="coin-area">
+            <div class="coin" id="coinFace">？</div>
+            <div class="coin-stats">
+              <div class="coin-stat"><div class="cv" id="c_heads">0</div><div class="cl">正面</div></div>
+              <div class="coin-stat"><div class="cv" id="c_total">0</div><div class="cl">總次數</div></div>
+              <div class="coin-stat"><div class="cv" id="c_pct">—</div><div class="cl">正面率</div></div>
+              <div class="coin-stat"><div class="cv" id="c_streak">0</div><div class="cl">連續正面</div></div>
+            </div>
+            <div class="coin-history" id="coinHistory"></div>
+            <div class="coin-btn-row">
+              <button class="g-btn" onclick="flipCoin(1)">拋 1 次</button>
+              <button class="g-btn" onclick="flipCoin(10)">拋 10 次</button>
+              <button class="g-btn" onclick="flipCoin(100)">拋 100 次</button>
+              <button class="g-btn outline" onclick="resetCoin()">重置</button>
+            </div>
+            <canvas id="coinCanvas" height="80"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- GAME 2: Guess the Mean -->
+      <div class="game-box">
+        <div class="game-box-header">
+          <span class="gh-icon">🎯</span>
+          <span class="gh-title">猜猜均值在哪</span>
+          <span class="gh-badge">統計直覺</span>
+        </div>
+        <div class="game-box-body">
+          <div class="game-desc-text">看圖中的散點，憑直覺猜測樣本均值的位置，訓練你的統計直覺！</div>
+          <div class="gtm-canvas-wrap">
+            <canvas id="gtmCanvas" height="150"></canvas>
+          </div>
+          <div class="gtm-input-row">
+            <input type="number" id="gtmGuess" placeholder="輸入你猜測的均值…" step="0.1">
+            <button class="g-btn" onclick="submitGTM()" style="flex:0;white-space:nowrap">確認</button>
+            <button class="g-btn outline" onclick="newGTM()" style="flex:0;white-space:nowrap">新題</button>
+          </div>
+          <div class="gtm-feedback" id="gtmFeedback"></div>
+          <div class="gtm-score" id="gtmScore">得分：0 / 0</div>
+        </div>
+      </div>
+
+      <!-- GAME 3: CLT Demo -->
+      <div class="game-box">
+        <div class="game-box-header">
+          <span class="gh-icon">🔔</span>
+          <span class="gh-title">中央極限定理動畫</span>
+          <span class="gh-badge">CLT 體驗</span>
+        </div>
+        <div class="game-box-body">
+          <div class="game-desc-text">選擇任意母體分布，抽樣並累積樣本均值，親眼看它變成鐘形曲線。</div>
+          <div class="clt-area">
+            <div class="clt-controls">
+              <label>母體：</label>
+              <select id="cltDist" onchange="resetCLT()">
+                <option value="uniform">均勻分布</option>
+                <option value="exponential">指數分布（偏態）</option>
+                <option value="bimodal">雙峰分布</option>
+                <option value="discrete">離散分布</option>
+              </select>
+              <label>樣本數 n=</label>
+              <input type="range" id="cltN" min="1" max="50" value="5" oninput="document.getElementById('cltNv').textContent=this.value;resetCLT()">
+              <span class="cv" id="cltNv">5</span>
+            </div>
+            <canvas id="cltPopCanvas" height="80"></canvas>
+            <canvas id="cltSampCanvas" height="100"></canvas>
+            <div class="clt-info" id="cltInfo">按「抽樣」開始實驗</div>
+            <div class="coin-btn-row">
+              <button class="g-btn" onclick="doSampleCLT(1)">抽樣 ×1</button>
+              <button class="g-btn" onclick="doSampleCLT(50)">抽樣 ×50</button>
+              <button class="g-btn" onclick="doSampleCLT(500)">抽樣 ×500</button>
+              <button class="g-btn outline" onclick="resetCLT()">重置</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GAME 4: Probability Quiz -->
+      <div class="game-box">
+        <div class="game-box-header">
+          <span class="gh-icon">🧠</span>
+          <span class="gh-title">機率直覺測驗</span>
+          <span class="gh-badge">10 題挑戰</span>
+        </div>
+        <div class="game-box-body">
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div></div>
+          <div class="quiz-q" id="quizQ">按「開始測驗」挑戰你的機率直覺！</div>
+          <div class="quiz-options" id="quizOpts"></div>
+          <div class="quiz-explain" id="quizExplain"></div>
+          <div class="quiz-meta">
+            <span id="quizMeta">0 / 10 題</span>
+            <span id="quizScoreDisplay">得分：0</span>
+          </div>
+          <div style="margin-top:10px">
+            <button class="g-btn" id="quizStartBtn" onclick="startQuiz()">開始測驗</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- CHEAT SHEET -->
   <section id="cheatsheet" class="cheatsheet">
     <div class="sec-header">
-      <span class="sec-num">05</span>
+      <span class="sec-num">06</span>
       <h2 class="sec-title">公式速查表</h2>
       <div class="sec-rule"></div>
     </div>
@@ -1036,7 +1378,7 @@ function drawHypothesis() {
   const pts = 200;
 
   // fill reject regions
-  [[−4,−crit],[crit,4]].forEach(([a,b]) => {
+  [[-4,-crit],[crit,4]].forEach(([a,b]) => {
     ctx.beginPath();
     ctx.moveTo(toX(a),toY(0));
     for(let i=0;i<=60;i++){
@@ -1129,10 +1471,10 @@ function drawMonteCarlo() {
 }
 
 // ── TAB SWITCHING ──────────────────────────────────────────────────
-function switchTab(name) {
+function switchTab(btn, name) {
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  event.target.classList.add('active');
+  btn.classList.add('active');
   document.getElementById('tab-'+name).classList.add('active');
   setTimeout(()=>{
     if(name==='bayes')      drawBayes();
@@ -1348,13 +1690,426 @@ formulas.forEach(f=>{
   </div>`;
 });
 
+// ═══════════════════════════════════════════════════════════════════
+// GAME 1 — COIN FLIP
+// ═══════════════════════════════════════════════════════════════════
+let coinHeads=0, coinTotal=0, coinStreak=0, coinHistory=[], coinRatioHistory=[];
+
+function flipCoin(n) {
+  for(let i=0;i<n;i++){
+    const h = Math.random()<0.5;
+    if(h){ coinHeads++; coinStreak++; } else { coinStreak=0; }
+    coinTotal++;
+    coinHistory.push(h?'H':'T');
+    coinRatioHistory.push(coinHeads/coinTotal);
+  }
+  const last = coinHistory[coinHistory.length-1];
+  const face = document.getElementById('coinFace');
+  face.textContent = last==='H'?'正':'反';
+  face.classList.remove('flip-anim');
+  void face.offsetWidth;
+  face.classList.add('flip-anim');
+  document.getElementById('c_heads').textContent = coinHeads;
+  document.getElementById('c_total').textContent = coinTotal;
+  document.getElementById('c_pct').textContent   = (coinHeads/coinTotal*100).toFixed(1)+'%';
+  document.getElementById('c_streak').textContent= coinStreak;
+  // history chips (last 30)
+  const hBox = document.getElementById('coinHistory');
+  hBox.innerHTML = coinHistory.slice(-40).map(c=>`<span class="coin-chip ${c}">${c==='H'?'正':'反'}</span>`).join('');
+  drawCoinChart();
+}
+
+function resetCoin(){
+  coinHeads=coinTotal=coinStreak=0; coinHistory=[]; coinRatioHistory=[];
+  document.getElementById('coinFace').textContent='？';
+  ['c_heads','c_total','c_streak'].forEach(id=>document.getElementById(id).textContent='0');
+  document.getElementById('c_pct').textContent='—';
+  document.getElementById('coinHistory').innerHTML='';
+  drawCoinChart();
+}
+
+function drawCoinChart(){
+  const canvas=document.getElementById('coinCanvas');
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=canvas.parentElement.clientWidth*dpr;
+  canvas.height=80*dpr;
+  canvas.style.height='80px';
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  const W=canvas.parentElement.clientWidth,H=80;
+  clearCanvas(canvas,ctx);
+  if(coinRatioHistory.length<2){
+    ctx.font='10px DM Mono,monospace'; ctx.fillStyle='#a8b8c8'; ctx.textAlign='center';
+    ctx.fillText('拋硬幣後顯示正面率變化圖',W/2,H/2); return;
+  }
+  const pts=coinRatioHistory;
+  const toX=i=>i/(pts.length-1)*W;
+  const toY=v=>H-4-(v)*( H-8);
+  // 50% line
+  ctx.beginPath(); ctx.moveTo(0,toY(.5)); ctx.lineTo(W,toY(.5));
+  ctx.strokeStyle='rgba(39,174,96,.4)'; ctx.lineWidth=1; ctx.setLineDash([4,4]); ctx.stroke(); ctx.setLineDash([]);
+  // curve
+  ctx.beginPath();
+  pts.forEach((v,i)=>i===0?ctx.moveTo(toX(i),toY(v)):ctx.lineTo(toX(i),toY(v)));
+  ctx.strokeStyle='#2980b9'; ctx.lineWidth=1.5; ctx.stroke();
+  ctx.font='9px DM Mono,monospace'; ctx.fillStyle='#27ae60'; ctx.textAlign='left';
+  ctx.fillText('50%',4,toY(.5)-3);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// GAME 2 — GUESS THE MEAN
+// ═══════════════════════════════════════════════════════════════════
+let gtmData=[], gtmTrueMean=0, gtmAnswered=false, gtmCorrect=0, gtmTotal=0;
+
+function newGTM(){
+  gtmAnswered=false;
+  document.getElementById('gtmGuess').value='';
+  document.getElementById('gtmFeedback').textContent='';
+  document.getElementById('gtmFeedback').style.color='var(--muted)';
+  // generate random dataset
+  const dist = Math.random();
+  gtmData=[];
+  if(dist<0.33){
+    // normal-ish
+    const mu=Math.random()*6-3, sig=0.5+Math.random()*1.5;
+    for(let i=0;i<25;i++) gtmData.push(mu+sig*(Math.random()+Math.random()+Math.random()-1.5));
+  } else if(dist<0.66){
+    // skewed
+    const base=Math.random()*4-2;
+    for(let i=0;i<20;i++) gtmData.push(base+Math.pow(Math.random(),2)*6);
+  } else {
+    // bimodal
+    const c1=Math.random()*3-3, c2=c1+2+Math.random()*2;
+    for(let i=0;i<12;i++) gtmData.push(c1+(Math.random()-.5)*1.2);
+    for(let i=0;i<12;i++) gtmData.push(c2+(Math.random()-.5)*1.2);
+  }
+  gtmTrueMean = gtmData.reduce((a,b)=>a+b,0)/gtmData.length;
+  drawGTM();
+}
+
+function drawGTM(guessVal, showAnswer){
+  const canvas=document.getElementById('gtmCanvas');
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=canvas.parentElement.clientWidth*dpr;
+  canvas.height=150*dpr;
+  canvas.style.height='150px';
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  const W=canvas.parentElement.clientWidth,H=150;
+  clearCanvas(canvas,ctx);
+  if(!gtmData.length) return;
+
+  const minV=Math.min(...gtmData)-0.5, maxV=Math.max(...gtmData)+0.5;
+  const toX=v=>20+(v-minV)/(maxV-minV)*(W-40);
+
+  // dots
+  // jitter y
+  const ys=gtmData.map(()=>40+Math.random()*60);
+  gtmData.forEach((v,i)=>{
+    ctx.beginPath(); ctx.arc(toX(v),ys[i],5,0,Math.PI*2);
+    ctx.fillStyle='rgba(41,128,185,.5)'; ctx.fill();
+    ctx.strokeStyle='#2980b9'; ctx.lineWidth=1; ctx.stroke();
+  });
+
+  if(showAnswer){
+    // true mean line
+    ctx.beginPath(); ctx.moveTo(toX(gtmTrueMean),10); ctx.lineTo(toX(gtmTrueMean),H-20);
+    ctx.strokeStyle='#27ae60'; ctx.lineWidth=2.5; ctx.stroke();
+    ctx.font='bold 10px DM Mono,monospace'; ctx.fillStyle='#27ae60'; ctx.textAlign='center';
+    ctx.fillText(`真實均值 ${gtmTrueMean.toFixed(2)}`,toX(gtmTrueMean),H-6);
+  }
+  if(guessVal!==undefined){
+    ctx.beginPath(); ctx.moveTo(toX(guessVal),10); ctx.lineTo(toX(guessVal),H-20);
+    ctx.strokeStyle='#c0392b'; ctx.lineWidth=2; ctx.setLineDash([5,4]); ctx.stroke(); ctx.setLineDash([]);
+    ctx.font='10px DM Mono,monospace'; ctx.fillStyle='#c0392b'; ctx.textAlign='center';
+    ctx.fillText(`你的猜測 ${(+guessVal).toFixed(2)}`,toX(guessVal),8);
+  }
+
+  // axis
+  ctx.beginPath(); ctx.moveTo(20,H-18); ctx.lineTo(W-20,H-18);
+  ctx.strokeStyle='#dce4ec'; ctx.lineWidth=1; ctx.stroke();
+  ctx.font='9px DM Mono,monospace'; ctx.fillStyle='#a8b8c8'; ctx.textAlign='center';
+  [minV+0.5, (minV+maxV)/2, maxV-0.5].forEach(v=>ctx.fillText(v.toFixed(1),toX(v),H-5));
+}
+
+function submitGTM(){
+  if(gtmAnswered||!gtmData.length) return;
+  const g=parseFloat(document.getElementById('gtmGuess').value);
+  if(isNaN(g)){ document.getElementById('gtmFeedback').textContent='請輸入數字'; return; }
+  gtmAnswered=true; gtmTotal++;
+  const err=Math.abs(g-gtmTrueMean);
+  const range=Math.max(...gtmData)-Math.min(...gtmData);
+  const pct=err/range;
+  let fb='', color='';
+  if(pct<0.05){ fb=`🎯 超準！誤差只有 ${err.toFixed(2)}，真厲害！`; color='#27ae60'; gtmCorrect++; }
+  else if(pct<0.12){ fb=`👍 不錯！誤差 ${err.toFixed(2)}，接近了！`; color='#d4860a'; gtmCorrect++; }
+  else { fb=`📉 差了點，誤差 ${err.toFixed(2)}，再試一次！`; color='#c0392b'; }
+  document.getElementById('gtmFeedback').textContent=fb;
+  document.getElementById('gtmFeedback').style.color=color;
+  document.getElementById('gtmScore').textContent=`得分：${gtmCorrect} / ${gtmTotal}`;
+  drawGTM(g, true);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// GAME 3 — CLT DEMO
+// ═══════════════════════════════════════════════════════════════════
+let cltMeans=[];
+
+function getCLTSample(n){
+  const dist=document.getElementById('cltDist').value;
+  const arr=[];
+  for(let i=0;i<n;i++){
+    let v;
+    if(dist==='uniform') v=Math.random()*10;
+    else if(dist==='exponential') v=-Math.log(1-Math.random())*2;
+    else if(dist==='bimodal') v=Math.random()<0.5?Math.random()*2+1:Math.random()*2+7;
+    else {
+      const r=Math.random();
+      v = r<0.3?1:r<0.6?3:r<0.8?5:8;
+    }
+    arr.push(v);
+  }
+  return arr;
+}
+
+function resetCLT(){
+  cltMeans=[];
+  drawCLTPopulation();
+  drawCLTSampling();
+  document.getElementById('cltInfo').textContent='按「抽樣」開始實驗';
+}
+
+function doSampleCLT(times){
+  const n=+document.getElementById('cltN').value;
+  for(let i=0;i<times;i++){
+    const s=getCLTSample(n);
+    cltMeans.push(s.reduce((a,b)=>a+b,0)/n);
+  }
+  drawCLTSampling();
+  const m=cltMeans.reduce((a,b)=>a+b,0)/cltMeans.length;
+  const v=cltMeans.reduce((a,b)=>a+(b-m)**2,0)/cltMeans.length;
+  document.getElementById('cltInfo').textContent=
+    `已收集 ${cltMeans.length} 個樣本均值 · 均值的均值=${m.toFixed(3)} · 標準差=${Math.sqrt(v).toFixed(3)} · 分布${cltMeans.length>=100?'已趨近常態 🔔':'逐漸成形…'}`;
+}
+
+function drawCLTPopulation(){
+  const canvas=document.getElementById('cltPopCanvas');
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=canvas.parentElement.clientWidth*dpr;
+  canvas.height=80*dpr; canvas.style.height='80px';
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  const W=canvas.parentElement.clientWidth,H=80;
+  clearCanvas(canvas,ctx);
+  ctx.font='9px DM Mono,monospace'; ctx.fillStyle='#a8b8c8'; ctx.textAlign='left';
+  ctx.fillText('母體分布：',4,12);
+
+  const dist=document.getElementById('cltDist').value;
+  const pts=120;
+  const xs=[],ys=[];
+  if(dist==='uniform'){
+    xs.push(0,0,10,10); ys.push(0,0.1,0.1,0);
+  } else if(dist==='exponential'){
+    for(let i=0;i<pts;i++){const x=i/pts*10;xs.push(x);ys.push(0.5*Math.exp(-x*0.5));}
+  } else if(dist==='bimodal'){
+    for(let i=0;i<pts;i++){const x=i/pts*12;xs.push(x);ys.push(normalPDF(x,2,0.7)+normalPDF(x,8,0.7));}
+  } else {
+    xs.push(0.5,1,1,1.5,2.5,3,3,3.5,4.5,5,5,5.5,7.5,8,8,8.5);
+    ys.push(0,0,0.3,0,0,0,0.3,0,0,0,0.2,0,0,0,0.2,0);
+  }
+  const maxY=Math.max(...ys)||0.1;
+  const minX=Math.min(...xs),maxX=Math.max(...xs);
+  const toX=x=>20+(x-minX)/(maxX-minX)*(W-30);
+  const toY=y=>H-14-y/maxY*(H-24);
+
+  ctx.beginPath();
+  ctx.moveTo(toX(xs[0]),toY(0));
+  xs.forEach((x,i)=>ctx.lineTo(toX(x),toY(ys[i])));
+  ctx.lineTo(toX(xs[xs.length-1]),toY(0));
+  ctx.closePath();
+  ctx.fillStyle='rgba(192,57,43,.15)'; ctx.fill();
+  ctx.beginPath();
+  xs.forEach((x,i)=>i===0?ctx.moveTo(toX(x),toY(ys[i])):ctx.lineTo(toX(x),toY(ys[i])));
+  ctx.strokeStyle='#c0392b'; ctx.lineWidth=1.5; ctx.stroke();
+
+  ctx.beginPath(); ctx.moveTo(20,H-13); ctx.lineTo(W-10,H-13);
+  ctx.strokeStyle='#dce4ec'; ctx.lineWidth=1; ctx.stroke();
+}
+
+function drawCLTSampling(){
+  const canvas=document.getElementById('cltSampCanvas');
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=canvas.parentElement.clientWidth*dpr;
+  canvas.height=100*dpr; canvas.style.height='100px';
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  const W=canvas.parentElement.clientWidth,H=100;
+  clearCanvas(canvas,ctx);
+  ctx.font='9px DM Mono,monospace'; ctx.fillStyle='#a8b8c8'; ctx.textAlign='left';
+  ctx.fillText('樣本均值分布（累積次數）：',4,12);
+
+  if(cltMeans.length<2){ return; }
+  const minV=Math.min(...cltMeans),maxV=Math.max(...cltMeans);
+  const bins=20;
+  const counts=new Array(bins).fill(0);
+  cltMeans.forEach(v=>{
+    const b=Math.min(bins-1,Math.floor((v-minV)/(maxV-minV+0.001)*bins));
+    counts[b]++;
+  });
+  const maxC=Math.max(...counts)||1;
+  const bw=(W-30)/bins;
+  const toY=c=>H-18-c/maxC*(H-30);
+
+  counts.forEach((c,i)=>{
+    const x=20+i*bw;
+    const bh=c/maxC*(H-30);
+    ctx.fillStyle='rgba(41,128,185,.55)';
+    ctx.fillRect(x,H-18-bh,bw-1,bh);
+  });
+
+  // overlay normal curve if enough samples
+  if(cltMeans.length>=30){
+    const mu=cltMeans.reduce((a,b)=>a+b,0)/cltMeans.length;
+    const sig=Math.sqrt(cltMeans.reduce((a,b)=>a+(b-mu)**2,0)/cltMeans.length);
+    ctx.beginPath();
+    for(let i=0;i<=100;i++){
+      const x=minV+(maxV-minV)*i/100;
+      const px=20+(x-minV)/(maxV-minV)*(W-30);
+      const py=toY(normalPDF(x,mu,sig)*cltMeans.length*(maxV-minV)/bins);
+      i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+    }
+    ctx.strokeStyle='#c0392b'; ctx.lineWidth=2; ctx.stroke();
+  }
+
+  ctx.beginPath(); ctx.moveTo(20,H-17); ctx.lineTo(W-10,H-17);
+  ctx.strokeStyle='#dce4ec'; ctx.lineWidth=1; ctx.stroke();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// GAME 4 — PROBABILITY QUIZ
+// ═══════════════════════════════════════════════════════════════════
+const QUIZ_QUESTIONS = [
+  {
+    q:'拋一枚公正硬幣 10 次，全部正面的機率是？',
+    opts:['1/1024','1/512','1/100','1/1000'],
+    ans:0,
+    explain:'每次正面機率為 1/2，10次獨立事件：(1/2)¹⁰ = 1/1024 ≈ 0.098%'
+  },{
+    q:'一個袋子有 3 顆紅球、7 顆藍球，隨機取 2 顆（不放回），兩顆都是紅球的機率？',
+    opts:['9%','3.3%','6.7%','12%'],
+    ans:1,
+    explain:'P = (3/10)×(2/9) = 6/90 = 1/15 ≈ 6.7%。等等——答案是 6.7%！選項順序是陷阱，正確答案是 C（6.7%）。'
+  },{
+    q:'甲病盛行率 1%，篩檢靈敏度 99%、特異度 95%。篩到陽性後，真的有病的機率約？',
+    opts:['99%','50%','16.7%','1%'],
+    ans:2,
+    explain:'貝葉斯：P(病|陽) = (0.99×0.01)/(0.99×0.01 + 0.05×0.99) ≈ 0.0099/0.0594 ≈ 16.7%。基率低時，假陽性大量稀釋了真陽性。'
+  },{
+    q:'「連輸 5 次後，第 6 次更容易贏」— 這句話是？',
+    opts:['正確，機率會補回來','正確，但只適用賭場','完全錯誤（賭徒謬誤）','取決於遊戲類型'],
+    ans:2,
+    explain:'獨立事件沒有記憶。每次結果只取決於當下機率，不受歷史影響。這就是著名的「賭徒謬誤」。'
+  },{
+    q:'一個班 23 人，至少 2 人同生日的機率約為？',
+    opts:['6.3%','23%','50.7%','89%'],
+    ans:2,
+    explain:'生日問題！1-(365×364×...×343)/365²³ ≈ 50.7%。人數遠少於 365 時機率就過半，反直覺！'
+  },{
+    q:'獨立事件 A（P=0.6）和 B（P=0.7），A 或 B 發生的機率？',
+    opts:['1.3（不可能）','88%','42%','65%'],
+    ans:1,
+    explain:'P(A∪B) = P(A)+P(B)-P(A∩B) = 0.6+0.7-0.6×0.7 = 1.3-0.42 = 0.88 = 88%'
+  },{
+    q:'標準常態分布中，|X| > 2 的機率約為？',
+    opts:['32%','5%','0.3%','16%'],
+    ans:1,
+    explain:'68-95-99.7 法則：±1σ 佔 68%，±2σ 佔 95%，所以 |X|>2σ ≈ 5%（雙尾各 2.5%）。'
+  },{
+    q:'樣本數從 100 增加到 400，信賴區間寬度變化？',
+    opts:['縮小 4 倍','縮小 2 倍','縮小 1.5 倍','不變'],
+    ans:1,
+    explain:'信賴區間寬度 ∝ 1/√n。√400/√100 = 2，所以寬度縮小一半。要縮小 4 倍需要樣本數增加 16 倍。'
+  },{
+    q:'回歸係數 r=0.9，表示 X 能解釋 Y 多少變異？',
+    opts:['90%','81%','0.9%','95%'],
+    ans:1,
+    explain:'決定係數 R² = r² = 0.81，即 81%。注意：r 是相關係數，r² 才是解釋力（決定係數）。'
+  },{
+    q:'p 值 = 0.03，顯著水準 α = 0.05，結論是？',
+    opts:['接受 H₀','拒絕 H₁','拒絕 H₀','數據不足'],
+    ans:2,
+    explain:'p < α（0.03 < 0.05），有足夠證據拒絕虛無假設 H₀。注意：這不代表 H₀ 一定是錯的，只是「不太可能」。'
+  }
+];
+let quizIdx=0, quizScore=0, quizOrder=[], quizActive=false;
+
+function startQuiz(){
+  quizIdx=0; quizScore=0; quizActive=true;
+  quizOrder=[...Array(QUIZ_QUESTIONS.length).keys()].sort(()=>Math.random()-.5).slice(0,10);
+  document.getElementById('quizStartBtn').style.display='none';
+  showQuizQ();
+}
+
+function showQuizQ(){
+  if(quizIdx>=quizOrder.length){ endQuiz(); return; }
+  const q=QUIZ_QUESTIONS[quizOrder[quizIdx]];
+  document.getElementById('quizProgressFill').style.width=`${quizIdx/10*100}%`;
+  document.getElementById('quizMeta').textContent=`${quizIdx+1} / 10 題`;
+  document.getElementById('quizQ').textContent=q.q;
+  document.getElementById('quizExplain').textContent='';
+  document.getElementById('quizExplain').classList.remove('show');
+  const optsEl=document.getElementById('quizOpts');
+  optsEl.innerHTML=q.opts.map((o,i)=>
+    `<button class="quiz-opt" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${o}</button>`
+  ).join('');
+}
+
+function answerQuiz(chosen){
+  const q=QUIZ_QUESTIONS[quizOrder[quizIdx]];
+  const opts=document.querySelectorAll('.quiz-opt');
+  opts.forEach(b=>b.disabled=true);
+  opts[q.ans].classList.add('correct');
+  if(chosen!==q.ans){ opts[chosen].classList.add('wrong'); } else { quizScore++; }
+  document.getElementById('quizScoreDisplay').textContent=`得分：${quizScore}`;
+  const ex=document.getElementById('quizExplain');
+  ex.textContent='💡 '+q.explain; ex.classList.add('show');
+  quizIdx++;
+  setTimeout(()=>{
+    if(quizIdx<quizOrder.length) showQuizQ();
+    else endQuiz();
+  }, 2200);
+}
+
+function endQuiz(){
+  document.getElementById('quizProgressFill').style.width='100%';
+  document.getElementById('quizMeta').textContent='完成！';
+  document.getElementById('quizExplain').classList.remove('show');
+  const grade = quizScore>=9?'🏆 機率大師！':quizScore>=7?'🎓 統計高手！':quizScore>=5?'📚 繼續加油！':'💪 再練習一下！';
+  document.getElementById('quizQ').textContent=`測驗結束！得分 ${quizScore}/10 — ${grade}`;
+  document.getElementById('quizOpts').innerHTML='';
+  const btn=document.getElementById('quizStartBtn');
+  btn.textContent='重新挑戰'; btn.style.display='block';
+  quizActive=false;
+}
+
 // ── INIT ──────────────────────────────────────────────────────────
 window.addEventListener('load', ()=>{
   drawHero();
   drawBayes();
+  drawSampling();
+  drawHypothesis();
+  drawMonteCarlo();
   drawDist();
-  document.getElementById('dv_mu').textContent    = document.getElementById('d_mu').value;
-  document.getElementById('dv_sigma').textContent = document.getElementById('d_sigma').value;
+  document.getElementById('dv_mu').textContent     = document.getElementById('d_mu').value;
+  document.getElementById('dv_sigma').textContent  = document.getElementById('d_sigma').value;
+  document.getElementById('dv_n').textContent      = document.getElementById('d_n').value;
+  document.getElementById('dv_pp').textContent     = document.getElementById('d_pp').value;
+  document.getElementById('dv_lambda').textContent = document.getElementById('d_lambda').value;
+  // games init
+  drawCoinChart();
+  newGTM();
+  drawCLTPopulation();
+  drawCLTSampling();
 });
 window.addEventListener('resize', ()=>{ drawHero(); drawDist(); });
 </script>
